@@ -28,6 +28,10 @@ public class User {
 		this.seller = seller;
 	}
 
+	public void setId(String id) {
+		this.id = id;
+	}
+
 	public Name getName() {
 		return name;
 	}
