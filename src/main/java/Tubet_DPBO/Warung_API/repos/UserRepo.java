@@ -15,46 +15,35 @@ import Tubet_DPBO.Warung_API.models.User;
  * UserRepo
  */
 @Repository
-public class UserRepo {
+public class UserRepo implements RepoInterface<User> {
 
 	private Map<String, User> database = new HashMap<>();
 	private long idCounter = 1;
 
-	public void testData() {
-		Name name = new Name("John", "Doe");
-		Date date = new Date(10, 4, 2002);
-		User test = new User(name, "email", "password", "username", "phoneNumber", date, false);
-		database.put("1", test);
-		database.put("2", test);
+	public UserRepo() {
+		testData();
 	}
 
-	public User save(User user) {
+	@Override
+	public User put(User user) {
 		String id = String.valueOf(idCounter++);
-		user.setId(id);
 		database.put(id, user);
 		return user;
 	}
 
-	public List<User> findAll() {
-
-		Name name = new Name("John", "Doe");
-		Name name2 = new Name("mantap", "soul");
-		Date date = new Date(10, 4, 2002);
-		User test = new User(name, "email", "password", "username", "phoneNumber", date, false);
-		User test2 = new User(name2, "email", "password", "username", "phoneNumber", date, false);
-
-		save(test);
-		save(test);
-		save(test);
-		update("1", test2);
+	@Override
+	public List<User> getAll() {
 		return new ArrayList<>(database.values());
 	}
 
-	public User findById(String id) {
+	@Override
+	public User getById(String id) {
 		return database.get(id);
 	}
 
-	public User update(String id, User user) {
+	@Override
+	public Object patch(String id, Object object) {
+		User user = (User) object;
 		if (database.containsKey(id)) {
 			user.setId(id);
 			database.put(id, user);
@@ -63,8 +52,23 @@ public class UserRepo {
 		return null;
 	}
 
+	@Override
 	public boolean delete(String id) {
 		return database.remove(id) != null;
+	}
+
+	public void testData() {
+		Name name = new Name("John", "Doe");
+		Name name2 = new Name("mantap", "soul");
+		Date date = new Date(10, 4, 2002);
+		User test = new User(name, "email", "password", "username", "phoneNumber", date, false);
+		User test2 = new User(name2, "email", "password", "username", "phoneNumber", date, false);
+
+		put(test);
+		test.setId("1");
+		put(test2);
+		test2.setId("1");
+		put(test);
 	}
 
 }

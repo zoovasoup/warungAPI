@@ -23,7 +23,7 @@ public class ProductController {
 
 	@GetMapping("/all")
 	public List<Product> getAllProduct() {
-		return productRepo.findAll();
+		return productRepo.getAll();
 	}
 
 }

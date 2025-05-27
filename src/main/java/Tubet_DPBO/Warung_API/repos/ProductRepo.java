@@ -12,28 +12,34 @@ import Tubet_DPBO.Warung_API.models.Product;
  * ProductRepo
  */
 @Repository
-public class ProductRepo {
+public class ProductRepo implements RepoInterface<Product> {
 	private Map<String, Product> database = new HashMap<>();
 	private long idCounter = 1;
 
-	public Product save(Product product) {
+	public ProductRepo() {
+		testData();
+	}
+
+	@Override
+	public Product put(Product product) {
 		String id = String.valueOf(idCounter++);
-		product.setId(id);
 		database.put(id, product);
 		return product;
 	}
 
-	public List<Product> findAll() {
-		testData();
+	@Override
+	public List<Product> getAll() {
 		return List.copyOf(database.values());
 	}
 
-	public Product findById(String id) {
+	public Product getById(String id) {
 		return database.get(id);
 	}
 
-	public Product update(String id, Product product) {
+	@Override
+	public Product patch(String id, Object object) {
 		if (database.containsKey(id)) {
+			Product product = (Product) object;
 			product.setId(id);
 			database.put(id, product);
 			return product;
@@ -73,8 +79,22 @@ public class ProductRepo {
 				100,
 				4);
 
-		database.put("1", a1);
-		database.put("2", a2);
+		Product a3 = new Product(
+				"P003",
+				"Sample Product",
+				"This is a sample product for testing purposes.",
+				49.99,
+				new String[] {
+						"https://example.com/images/product1.jpg",
+						"https://example.com/images/product2.jpg"
+				},
+				new String[] { "Electronics", "Gadgets" },
+				100,
+				4);
+
+		put(a1);
+		put(a2);
+		put(a3);
 	}
 
 }
