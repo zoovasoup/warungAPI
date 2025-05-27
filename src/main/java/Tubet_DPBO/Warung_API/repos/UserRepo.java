@@ -67,8 +67,7 @@ public class UserRepo implements RepoInterface<User> {
 		put(test);
 		test.setId("1");
 		put(test2);
-		test2.setId("1");
-		put(test);
+		test2.setId("2");
 	}
 
 }
