@@ -25,6 +25,7 @@ public class UserRepo {
 		Date date = new Date(10, 4, 2002);
 		User test = new User(name, "email", "password", "username", "phoneNumber", date, false);
 		database.put("1", test);
+		database.put("2", test);
 	}
 
 	public User save(User user) {
@@ -35,7 +36,17 @@ public class UserRepo {
 	}
 
 	public List<User> findAll() {
-		testData();
+
+		Name name = new Name("John", "Doe");
+		Name name2 = new Name("mantap", "soul");
+		Date date = new Date(10, 4, 2002);
+		User test = new User(name, "email", "password", "username", "phoneNumber", date, false);
+		User test2 = new User(name2, "email", "password", "username", "phoneNumber", date, false);
+
+		save(test);
+		save(test);
+		save(test);
+		update("1", test2);
 		return new ArrayList<>(database.values());
 	}
 

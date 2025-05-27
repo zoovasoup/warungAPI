@@ -16,6 +16,7 @@ public class User {
 	private Date dateOfBirth;
 	private boolean seller;
 	private Address address;
+	private Store store;
 
 	public User(Name name, String email, String password, String username, String phoneNumber, Date dateOfBirth,
 			boolean seller) {
@@ -68,4 +69,11 @@ public class User {
 		return address;
 	}
 
+	public void setStore(Store store) {
+		if (seller) {
+			this.store = store;
+		} else {
+			throw new IllegalStateException("Only sellers can have a store.");
+		}
+	}
 }
