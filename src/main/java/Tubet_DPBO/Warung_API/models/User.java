@@ -27,6 +27,7 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.dateOfBirth = dateOfBirth;
 		this.seller = seller;
+
 	}
 
 	public void setId(String id) {
@@ -75,5 +76,9 @@ public class User {
 		} else {
 			throw new IllegalStateException("Only sellers can have a store.");
 		}
+	}
+
+	public Store getStore() {
+		return store;
 	}
 }

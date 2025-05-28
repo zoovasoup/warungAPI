@@ -1,5 +1,8 @@
 package Tubet_DPBO.Warung_API.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Product
  */
@@ -9,13 +12,13 @@ public class Product {
 	private String title;
 	private String description;
 	private double price;
-	private String[] pictures;
-	private String[] categories;
+	private List<String> pictures;
+	private List<String> categories;
 	private int stock;
 	private int rating;
 
 	public Product(String id, String title, String description, double price,
-			String[] pictures, String[] categories, int stock, int rating) {
+			ArrayList<String> pictures, ArrayList<String> categories, int stock, int rating) {
 		this.id = id;
 		this.title = title;
 		this.description = description;
@@ -58,22 +61,6 @@ public class Product {
 		this.price = price;
 	}
 
-	public String[] getPictures() {
-		return pictures;
-	}
-
-	public void setPictures(String[] pictures) {
-		this.pictures = pictures;
-	}
-
-	public String[] getCategories() {
-		return categories;
-	}
-
-	public void setCategories(String[] categories) {
-		this.categories = categories;
-	}
-
 	public int getStock() {
 		return stock;
 	}
@@ -88,6 +75,40 @@ public class Product {
 
 	public void setRating(int rating) {
 		this.rating = rating;
+	}
+
+	public void addPicture(String picture) {
+		if (this.pictures == null) {
+			this.pictures = new ArrayList<>();
+		}
+		this.pictures.add(picture);
+	}
+
+	public void setPictures(ArrayList<String> pictures) {
+		this.pictures = pictures;
+	}
+
+	public void setCategories(ArrayList<String> categories) {
+		this.categories = categories;
+	}
+
+	public void addCategory(String category) {
+		if (this.categories == null) {
+			this.categories = new ArrayList<>();
+		}
+		this.categories.add(category);
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public ArrayList<String> getPictures() {
+		return pictures;
+	}
+
+	public ArrayList<String> getCategories() {
+		return categories;
 	}
 
 }

@@ -1,5 +1,6 @@
 package Tubet_DPBO.Warung_API.repos;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -53,16 +54,21 @@ public class ProductRepo implements RepoInterface<Product> {
 
 	public void testData() {
 
+		ArrayList<String> imageUrls = new ArrayList<>(List.of(
+				"https://example.com/images/product1.jpg",
+				"https://example.com/images/product2.jpg"));
+
+		ArrayList<String> categories = new ArrayList<>(List.of("Electronics", "Gadgets"));
+
 		Product a1 = new Product(
 				"P001",
 				"Sample Product",
 				"This is a sample product for testing purposes.",
 				49.99,
-				new String[] {
+				new ArrayList<>(List.of(
 						"https://example.com/images/product1.jpg",
-						"https://example.com/images/product2.jpg"
-				},
-				new String[] { "Electronics", "Gadgets" },
+						"https://example.com/images/product2.jpg")),
+				new ArrayList<>(List.of("Electronics", "Gadgets")),
 				100,
 				4);
 
@@ -71,11 +77,10 @@ public class ProductRepo implements RepoInterface<Product> {
 				"Sample Product",
 				"This is a sample product for testing purposes.",
 				49.99,
-				new String[] {
+				new ArrayList<>(List.of(
 						"https://example.com/images/product1.jpg",
-						"https://example.com/images/product2.jpg"
-				},
-				new String[] { "Electronics", "Gadgets" },
+						"https://example.com/images/product2.jpg")),
+				new ArrayList<>(List.of("Electronics", "Gadgets")),
 				100,
 				4);
 
@@ -84,11 +89,10 @@ public class ProductRepo implements RepoInterface<Product> {
 				"Sample Product",
 				"This is a sample product for testing purposes.",
 				49.99,
-				new String[] {
+				new ArrayList<>(List.of(
 						"https://example.com/images/product1.jpg",
-						"https://example.com/images/product2.jpg"
-				},
-				new String[] { "Electronics", "Gadgets" },
+						"https://example.com/images/product2.jpg")),
+				new ArrayList<>(List.of("Electronics", "Gadgets")),
 				100,
 				4);
 
