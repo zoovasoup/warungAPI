@@ -37,10 +37,6 @@ public class Product {
 		this.id = id;
 	}
 
-	public String gettitle() {
-		return title;
-	}
-
 	public void setTitle(String title) {
 		this.title = title;
 	}
@@ -103,11 +99,11 @@ public class Product {
 		return title;
 	}
 
-	public ArrayList<String> getPictures() {
+	public List<String> getPictures() {
 		return pictures;
 	}
 
-	public ArrayList<String> getCategories() {
+	public List<String> getCategories() {
 		return categories;
 	}
 

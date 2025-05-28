@@ -18,7 +18,6 @@ public class ProductRepo implements RepoInterface<Product> {
 	private long idCounter = 1;
 
 	public ProductRepo() {
-		testData();
 	}
 
 	@Override
@@ -50,55 +49,6 @@ public class ProductRepo implements RepoInterface<Product> {
 
 	public boolean delete(String id) {
 		return database.remove(id) != null;
-	}
-
-	public void testData() {
-
-		ArrayList<String> imageUrls = new ArrayList<>(List.of(
-				"https://example.com/images/product1.jpg",
-				"https://example.com/images/product2.jpg"));
-
-		ArrayList<String> categories = new ArrayList<>(List.of("Electronics", "Gadgets"));
-
-		Product a1 = new Product(
-				"P001",
-				"Sample Product",
-				"This is a sample product for testing purposes.",
-				49.99,
-				new ArrayList<>(List.of(
-						"https://example.com/images/product1.jpg",
-						"https://example.com/images/product2.jpg")),
-				new ArrayList<>(List.of("Electronics", "Gadgets")),
-				100,
-				4);
-
-		Product a2 = new Product(
-				"P002",
-				"Sample Product",
-				"This is a sample product for testing purposes.",
-				49.99,
-				new ArrayList<>(List.of(
-						"https://example.com/images/product1.jpg",
-						"https://example.com/images/product2.jpg")),
-				new ArrayList<>(List.of("Electronics", "Gadgets")),
-				100,
-				4);
-
-		Product a3 = new Product(
-				"P003",
-				"Sample Product",
-				"This is a sample product for testing purposes.",
-				49.99,
-				new ArrayList<>(List.of(
-						"https://example.com/images/product1.jpg",
-						"https://example.com/images/product2.jpg")),
-				new ArrayList<>(List.of("Electronics", "Gadgets")),
-				100,
-				4);
-
-		put(a1);
-		put(a2);
-		put(a3);
 	}
 
 }

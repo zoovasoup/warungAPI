@@ -21,7 +21,6 @@ public class UserRepo implements RepoInterface<User> {
 	private long idCounter = 1;
 
 	public UserRepo() {
-		testData();
 	}
 
 	@Override
@@ -55,19 +54,6 @@ public class UserRepo implements RepoInterface<User> {
 	@Override
 	public boolean delete(String id) {
 		return database.remove(id) != null;
-	}
-
-	public void testData() {
-		Name name = new Name("John", "Doe");
-		Name name2 = new Name("mantap", "soul");
-		Date date = new Date(10, 4, 2002);
-		User test = new User(name, "email", "password", "username", "phoneNumber", date, true);
-		User test2 = new User(name2, "email", "password", "username", "phoneNumber", date, true);
-
-		put(test);
-		test.setId("1");
-		put(test2);
-		test2.setId("2");
 	}
 
 }

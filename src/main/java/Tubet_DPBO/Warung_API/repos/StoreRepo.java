@@ -21,8 +21,6 @@ public class StoreRepo implements RepoInterface<Store> {
 
 	public StoreRepo(UserRepo userRepo) {
 		this.userRepo = userRepo;
-
-		testData();
 	}
 
 	@Override
@@ -59,7 +57,6 @@ public class StoreRepo implements RepoInterface<Store> {
 		return storeDatabase.remove(id) != null;
 	}
 
-	// Optional method: jika kamu mau cari berdasarkan user
 	public Store getByOwnerId(String ownerId) {
 		return storeDatabase.values()
 				.stream()
@@ -68,50 +65,4 @@ public class StoreRepo implements RepoInterface<Store> {
 				.orElse(null);
 	}
 
-	private void testData() {
-		User existingSeller = userRepo.getAll()
-				.stream()
-				.filter(User::isSeller)
-				.findFirst()
-				.orElse(null);
-
-		if (existingSeller == null) {
-			System.out.println("Tidak ada seller di UserRepo. Tidak bisa buat store dummy.");
-			return;
-		}
-
-		ArrayList<Product> products1 = new ArrayList<>();
-		products1.add(new Product("P001", "Indomie", "Mie goreng instan", 3000.0,
-				new String[] {}, new String[] { "Makanan" }, 50, 5));
-		products1.add(new Product("P002", "Teh Botol", "Minuman teh manis", 4000.0,
-				new String[] {}, new String[] { "Minuman" }, 20, 4));
-
-		ArrayList<Product> products2 = new ArrayList<>();
-		products2.add(new Product("P003", "Sabun Lifebuoy", "Sabun mandi antiseptik", 6000.0,
-				new String[] {}, new String[] { "Kesehatan" }, 15, 5));
-
-		Store store1 = new Store(
-				String.valueOf(idCounter),
-				"Warung Maju Jaya",
-				"Sembako dan jajanan",
-				"https://example.com/pic1.jpg",
-				"Jl. Melati No.1",
-				"08123456789",
-				existingSeller,
-				products1);
-		idCounter++;
-		storeDatabase.put(store1.getId(), store1);
-
-		Store store2 = new Store(
-				String.valueOf(idCounter),
-				"Toko Sehat",
-				"Menjual produk kesehatan",
-				"https://example.com/pic2.jpg",
-				"Jl. Sehat No.2",
-				"08987654321",
-				existingSeller,
-				products2);
-		idCounter++;
-		storeDatabase.put(store2.getId(), store2);
-	}
 }
