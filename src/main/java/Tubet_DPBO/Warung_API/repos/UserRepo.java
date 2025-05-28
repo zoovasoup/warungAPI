@@ -61,8 +61,8 @@ public class UserRepo implements RepoInterface<User> {
 		Name name = new Name("John", "Doe");
 		Name name2 = new Name("mantap", "soul");
 		Date date = new Date(10, 4, 2002);
-		User test = new User(name, "email", "password", "username", "phoneNumber", date, false);
-		User test2 = new User(name2, "email", "password", "username", "phoneNumber", date, false);
+		User test = new User(name, "email", "password", "username", "phoneNumber", date, true);
+		User test2 = new User(name2, "email", "password", "username", "phoneNumber", date, true);
 
 		put(test);
 		test.setId("1");
